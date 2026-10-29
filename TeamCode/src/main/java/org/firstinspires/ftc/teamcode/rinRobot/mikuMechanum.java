@@ -43,7 +43,7 @@ public class mikuMechanum extends OpMode {
     public void loop() {
         double x = gamepad1.left_stick_x * 1.1;
         double y = -gamepad1.left_stick_y;
-        double z = gamepad1.right_stick_x/2;
+        double z = gamepad1.right_stick_x/1.2;
 
         double leftFrontPow = Math.pow(x + y + z, 3);
         double leftbackPow = Math.pow(-x + y + z, 3);
