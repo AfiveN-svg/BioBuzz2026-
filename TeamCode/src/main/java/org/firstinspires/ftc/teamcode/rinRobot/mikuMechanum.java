@@ -45,10 +45,10 @@ public class mikuMechanum extends OpMode {
         double y = -gamepad1.left_stick_y;
         double z = gamepad1.right_stick_x/1.2;
 
-        double leftFrontPow = Math.pow(x + y + z, 3);
-        double leftbackPow = Math.pow(-x + y + z, 3);
-        double rightFrontPow = Math.pow(-x + y - z, 3);
-        double rightBackPow = Math.pow(x + y - z, 3);
+        double leftFrontPow = x + y + z;
+        double leftbackPow = -x + y + z;
+        double rightFrontPow = -x + y - z;
+        double rightBackPow = x + y - z;
         boolean tetoStateCurrent = gamepad1.dpad_down;
         boolean mikuStateCurrent = gamepad1.b;
 
