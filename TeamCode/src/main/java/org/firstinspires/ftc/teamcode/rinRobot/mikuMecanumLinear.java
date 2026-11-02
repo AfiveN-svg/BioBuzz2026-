@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 @TeleOp
 public class mikuMecanumLinear extends LinearOpMode {
-    sFMikiServo tetoMiku = new sFMikiServo();
+   // sFMikiServo tetoMiku = new sFMikiServo();
     private boolean tetoToggle = false;
     private boolean tetoStatePrevious = false;
     @Override
@@ -17,7 +17,7 @@ public class mikuMecanumLinear extends LinearOpMode {
         DcMotor rightFrontMotor = hardwareMap.get(DcMotor.class, "rightFrontMotor");
         DcMotor tetoIntake = hardwareMap.get(DcMotor.class, "tetoIntake");
         DcMotor mikuOuttake = hardwareMap.get(DcMotor.class, "tetoOuttake");
-        tetoMiku.init(hardwareMap);
+       // tetoMiku.init(hardwareMap);
 
         waitForStart();
 
@@ -26,19 +26,19 @@ public class mikuMecanumLinear extends LinearOpMode {
             double y = -gamepad1.left_stick_y;
             double z = gamepad1.right_stick_x;
 
-            double leftFrontPow = Math.pow(-x + y + z, 3);
-            double leftbackPow = Math.pow(x + y + z, 3);
-            double rightFrontPow = Math.pow(x + y - z, 3);
-            double rightBackPow = Math.pow(-x + y - z, 3);
-            boolean tetoStateCurrent = gamepad1.dpad_down;
-            boolean mikuStateCurrent = gamepad1.b;
+            double leftFrontPow = -x + y + z;
+            double leftbackPow = x + y + z;
+            double rightFrontPow = x + y - z;
+            double rightBackPow = -x + y - z;
+           // boolean tetoStateCurrent = gamepad1.dpad_down;
+        //    boolean mikuStateCurrent = gamepad1.b;
 
-            leftFrontMotor.setPower(leftFrontPow);
-            leftBackMotor.setPower(leftbackPow);
-            rightFrontMotor.setPower(rightFrontPow);
-            rightBackMotor.setPower(rightBackPow);
+            leftFrontMotor.setPower(leftFrontPow/2);
+            leftBackMotor.setPower(leftbackPow/2);
+            rightFrontMotor.setPower(rightFrontPow/2);
+            rightBackMotor.setPower(rightBackPow/2);
 
-            if (tetoStateCurrent && !tetoStatePrevious) {
+        /*    if (tetoStateCurrent && !tetoStatePrevious) {
                 tetoToggle = !tetoToggle;
             }
             tetoStatePrevious = tetoStateCurrent;
