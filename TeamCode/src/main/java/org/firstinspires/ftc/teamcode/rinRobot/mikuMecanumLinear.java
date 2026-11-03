@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp
 public class mikuMecanumLinear extends LinearOpMode {
-    sFMikiServo tetoMiku = new sFMikiServo();
+   // sFMikiServo tetoMiku = new sFMikiServo();
     private boolean tetoToggle = false;
     private boolean tetoStatePrevious = false;
     private boolean mikuToggle = false;
@@ -21,8 +21,9 @@ public class mikuMecanumLinear extends LinearOpMode {
         DcMotor rightFrontMotor = hardwareMap.get(DcMotor.class, "rightFrontMotor");
         DcMotor tetoIntake = hardwareMap.get(DcMotor.class, "tetoIntake");
         DcMotor mikuOuttake = hardwareMap.get(DcMotor.class, "tetoOuttake");
-        tetoMiku.init(hardwareMap);
-
+       // tetoMiku.init(hardwareMap);
+        Servo tetoServo = hardwareMap.get(Servo.class, "tetoServo");
+        Servo mikuServo = hardwareMap.get(Servo.class, "mikuServo");
         waitForStart();
 
         while (opModeIsActive()) {
@@ -59,12 +60,12 @@ public class mikuMecanumLinear extends LinearOpMode {
             if (mikuToggle) {
                 mikuOuttake.setPower(-.7);
                 sleep(1000);
-                tetoMiku.setMikuServoPosition(.25);
-                tetoMiku.setTetoServoPosition(-.25);
+                mikuServo.setPosition(.25);
+                tetoServo.setPosition(-.25);
             } else {
                 mikuOuttake.setPower(0);
-                tetoMiku.setMikuServoPosition(0);
-                tetoMiku.setTetoServoPosition(0);
+                mikuServo.setPosition(0);
+                tetoServo.setPosition(0);
             }
         }
     }
