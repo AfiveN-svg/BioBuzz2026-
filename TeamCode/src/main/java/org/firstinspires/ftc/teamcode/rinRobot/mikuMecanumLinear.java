@@ -20,7 +20,7 @@ public class mikuMecanumLinear extends LinearOpMode {
         DcMotor rightFrontMotor = hardwareMap.get(DcMotor.class, "rightFrontMotor");
         DcMotor tetoIntake = hardwareMap.get(DcMotor.class, "tetoIntake");
         DcMotor mikuOuttake = hardwareMap.get(DcMotor.class, "tetoOuttake");
-        // tetoMiku.init(hardwareMap);
+        tetoMiku.init(hardwareMap);
 
         waitForStart();
 
