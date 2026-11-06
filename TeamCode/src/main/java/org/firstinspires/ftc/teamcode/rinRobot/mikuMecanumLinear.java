@@ -12,6 +12,8 @@ public class mikuMecanumLinear extends LinearOpMode {
     private boolean tetoStatePrevious = false;
     private boolean mikuToggle = false;
     private boolean mikuStatePrevious = false;
+    private boolean neruStatePrevious = false;
+    private boolean neruToggle = false;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -27,6 +29,7 @@ public class mikuMecanumLinear extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
+
             double x = gamepad1.left_stick_x * 1.1;
             double y = -gamepad1.left_stick_y;
             double z = gamepad1.right_stick_x * 1.2;
@@ -37,11 +40,24 @@ public class mikuMecanumLinear extends LinearOpMode {
             double rightBackPow = x + y - z;
             boolean tetoStateCurrent = gamepad1.dpad_down;
             boolean mikuStateCurrent = gamepad1.b;
+        boolean neruStateCurrent = gamepad1.a;
+        if ( neruStateCurrent && !neruStatePrevious) {
+            neruToggle = !neruToggle;
+        }
+        tetoStatePrevious = tetoStateCurrent;
+            if(neruToggle) {
 
-            leftFrontMotor.setPower(leftFrontPow / 2);
-            leftBackMotor.setPower(leftbackPow / 2);
-            rightFrontMotor.setPower(rightFrontPow / 2);
-            rightBackMotor.setPower(rightBackPow / 2);
+                leftFrontMotor.setPower(leftFrontPow / 1.5);
+                leftBackMotor.setPower(leftbackPow / 1.5);
+                rightFrontMotor.setPower(rightFrontPow / 1.5);
+                rightBackMotor.setPower(rightBackPow / 1.5);
+            }
+            else {
+                leftFrontMotor.setPower(leftFrontPow / 2);
+                leftBackMotor.setPower(leftbackPow / 2);
+                rightFrontMotor.setPower(rightFrontPow / 2);
+                rightBackMotor.setPower(rightBackPow / 2);
+            }
             if (tetoStateCurrent && !tetoStatePrevious) {
                 tetoToggle = !tetoToggle;
             }
