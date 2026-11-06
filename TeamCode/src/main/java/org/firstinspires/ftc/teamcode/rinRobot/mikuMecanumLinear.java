@@ -45,7 +45,7 @@ public class mikuMecanumLinear extends LinearOpMode {
             neruToggle = !neruToggle;
         }
         tetoStatePrevious = tetoStateCurrent;
-            if(neruToggle) {
+            if(!neruToggle) {
 
                 leftFrontMotor.setPower(leftFrontPow / 1.5);
                 leftBackMotor.setPower(leftbackPow / 1.5);
@@ -63,7 +63,7 @@ public class mikuMecanumLinear extends LinearOpMode {
             }
             tetoStatePrevious = tetoStateCurrent;
             if (tetoToggle) {
-                tetoIntake.setPower(1);
+                tetoIntake.setPower(.8);
 
             } else {
                 tetoIntake.setPower(0);
