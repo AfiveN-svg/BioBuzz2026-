@@ -41,23 +41,8 @@ public class mikuMecanumLinear extends LinearOpMode {
             boolean tetoStateCurrent = gamepad1.dpad_down;
             boolean mikuStateCurrent = gamepad1.b;
         boolean neruStateCurrent = gamepad1.a;
-        if ( neruStateCurrent && !neruStatePrevious) {
-            neruToggle = !neruToggle;
-        }
-        tetoStatePrevious = tetoStateCurrent;
-            if(!neruToggle) {
 
-                leftFrontMotor.setPower(leftFrontPow / 1.5);
-                leftBackMotor.setPower(leftbackPow / 1.5);
-                rightFrontMotor.setPower(rightFrontPow / 1.5);
-                rightBackMotor.setPower(rightBackPow / 1.5);
-            }
-            else {
-                leftFrontMotor.setPower(leftFrontPow / 2);
-                leftBackMotor.setPower(leftbackPow / 2);
-                rightFrontMotor.setPower(rightFrontPow / 2);
-                rightBackMotor.setPower(rightBackPow / 2);
-            }
+
             if (tetoStateCurrent && !tetoStatePrevious) {
                 tetoToggle = !tetoToggle;
             }
