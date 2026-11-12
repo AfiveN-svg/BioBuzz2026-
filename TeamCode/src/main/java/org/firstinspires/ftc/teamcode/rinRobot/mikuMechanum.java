@@ -17,6 +17,8 @@ public class mikuMechanum extends OpMode {
         private boolean tetoStatePrevious = false;
         private boolean mikuToggle = false;
         private boolean mikuStatePrevious = false;
+    private boolean neruStatePrevious = false;
+    private boolean neruToggle = false;
 
    private DcMotor leftBackMotor;
     private DcMotor leftFrontMotor;
@@ -51,6 +53,7 @@ public class mikuMechanum extends OpMode {
         double rightBackPow = x + y - z;
         boolean tetoStateCurrent = gamepad1.dpad_down;
         boolean mikuStateCurrent = gamepad1.b;
+        boolean neruStateCurrent = gamepad1.a;
 
         leftFrontMotor.setPower(leftFrontPow);
         leftBackMotor.setPower(leftbackPow);
@@ -86,6 +89,23 @@ public class mikuMechanum extends OpMode {
 
             mikuServo.setPosition(0);
             tetoServo.setPosition(0);
+        }
+        if ( neruStateCurrent && !neruStatePrevious) {
+            neruToggle = !neruToggle;
+        }
+        tetoStatePrevious = tetoStateCurrent;
+        if(!neruToggle) {
+
+            leftFrontMotor.setPower(leftFrontPow / 1.5);
+            leftBackMotor.setPower(leftbackPow / 1.5);
+            rightFrontMotor.setPower(rightFrontPow / 1.5);
+            rightBackMotor.setPower(rightBackPow / 1.5);
+        }
+        else {
+            leftFrontMotor.setPower(leftFrontPow / 2);
+            leftBackMotor.setPower(leftbackPow / 2);
+            rightFrontMotor.setPower(rightFrontPow / 2);
+            rightBackMotor.setPower(rightBackPow / 2);
         }
     }
 }

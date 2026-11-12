@@ -68,6 +68,23 @@ public class mikuMecanumLinear extends LinearOpMode {
                 mikuServo.setPosition(0);
                 tetoServo.setPosition(0);
             }
+                if ( neruStateCurrent && !neruStatePrevious) {
+                    neruToggle = !neruToggle;
+                }
+                tetoStatePrevious = tetoStateCurrent;
+                if(!neruToggle) {
+
+                    leftFrontMotor.setPower(leftFrontPow / 1.5);
+                    leftBackMotor.setPower(leftbackPow / 1.5);
+                    rightFrontMotor.setPower(rightFrontPow / 1.5);
+                    rightBackMotor.setPower(rightBackPow / 1.5);
+                }
+                else {
+                    leftFrontMotor.setPower(leftFrontPow / 2);
+                    leftBackMotor.setPower(leftbackPow / 2);
+                    rightFrontMotor.setPower(rightFrontPow / 2);
+                    rightBackMotor.setPower(rightBackPow / 2);
+                }
+            }
         }
     }
-}
