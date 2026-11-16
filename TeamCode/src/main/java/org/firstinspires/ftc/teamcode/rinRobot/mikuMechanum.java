@@ -43,6 +43,7 @@ public class mikuMechanum extends OpMode {
         tetoServo.setDirection(Servo.Direction.REVERSE);
         neruServo = hardwareMap.get(Servo.class, "neruServo");
         gumiServo = hardwareMap.get(Servo.class, "gumiServo");
+        gumiServo.setDirection(Servo.Direction.REVERSE);
     }
 
     @Override
@@ -88,11 +89,15 @@ public class mikuMechanum extends OpMode {
         if (gamepad1.right_trigger > .5) {
             mikuServo.setPosition(.25);
             tetoServo.setPosition(.25);
+            neruServo.setPosition(-.25);
+            gumiServo.setPosition(-.25);
         }
         else {
 
             mikuServo.setPosition(0);
             tetoServo.setPosition(0);
+            neruServo.setPosition(0);
+            gumiServo.setPosition(0);
         }
         if ( neruStateCurrent && !neruStatePrevious) {
             neruToggle = !neruToggle;
