@@ -28,6 +28,8 @@ public class mikuMechanum extends OpMode {
     private DcMotor mikuOuttake;
     private Servo mikuServo;
     private Servo tetoServo;
+    private Servo neruServo;
+    private Servo gumiServo;
     @Override
     public void init() {
         leftBackMotor = hardwareMap.get(DcMotor.class, "leftBackMotor");
@@ -39,6 +41,8 @@ public class mikuMechanum extends OpMode {
         mikuServo = hardwareMap.get(Servo.class, "mikuServo");
         tetoServo = hardwareMap.get(Servo.class, "tetoServo");
         tetoServo.setDirection(Servo.Direction.REVERSE);
+        neruServo = hardwareMap.get(Servo.class, "neruServo");
+        gumiServo = hardwareMap.get(Servo.class, "gumiServo");
     }
 
     @Override
@@ -96,16 +100,16 @@ public class mikuMechanum extends OpMode {
         tetoStatePrevious = tetoStateCurrent;
         if(!neruToggle) {
 
+            leftFrontMotor.setPower(leftFrontPow / 1.2);
+            leftBackMotor.setPower(leftbackPow / 1.2);
+            rightFrontMotor.setPower(rightFrontPow / 1.2);
+            rightBackMotor.setPower(rightBackPow / 1.2);
+        }
+        else {
             leftFrontMotor.setPower(leftFrontPow / 1.5);
             leftBackMotor.setPower(leftbackPow / 1.5);
             rightFrontMotor.setPower(rightFrontPow / 1.5);
             rightBackMotor.setPower(rightBackPow / 1.5);
-        }
-        else {
-            leftFrontMotor.setPower(leftFrontPow / 2);
-            leftBackMotor.setPower(leftbackPow / 2);
-            rightFrontMotor.setPower(rightFrontPow / 2);
-            rightBackMotor.setPower(rightBackPow / 2);
         }
     }
 }
