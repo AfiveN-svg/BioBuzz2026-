@@ -28,8 +28,6 @@ public class mikuMechanum extends OpMode {
     private DcMotor Outtake;
     private Servo sLServo;
     private Servo sRServo;
-    private Servo bLServo;
-    private Servo bRServo;
     @Override
     public void init() {
         lBMotor = hardwareMap.get(DcMotor.class, "leftBackMotor");
@@ -42,9 +40,6 @@ public class mikuMechanum extends OpMode {
         sLServo = hardwareMap.get(Servo.class, "mikuServo");
         sRServo = hardwareMap.get(Servo.class, "tetoServo");
         sRServo.setDirection(Servo.Direction.REVERSE);
-        bLServo = hardwareMap.get(Servo.class, "neruServo");
-        bRServo = hardwareMap.get(Servo.class, "gumiServo");
-        bRServo.setDirection(Servo.Direction.REVERSE);
     }
 
     @Override
@@ -90,15 +85,11 @@ public class mikuMechanum extends OpMode {
         if (gamepad1.right_trigger > .5) {
             sLServo.setPosition(.25);
             sRServo.setPosition(.25);
-            bLServo.setPosition(-.25);
-            bRServo.setPosition(-.25);
         }
         else {
 
             sLServo.setPosition(0);
             sRServo.setPosition(0);
-            bLServo.setPosition(0);
-            bRServo.setPosition(0);
         }
         if ( neruStateCurrent && !neruStatePrevious) {
             neruToggle = !neruToggle;
@@ -106,16 +97,16 @@ public class mikuMechanum extends OpMode {
         tetoStatePrevious = tetoStateCurrent;
         if(!neruToggle) {
 
-            lFMotor.setPower(leftFrontPow / 1.2);
-            lBMotor.setPower(leftBackPow / 1.2);
-            rFMotor.setPower(rightFrontPow / 1.2);
-            rBMotor.setPower(rightBackPow / 1.2);
-        }
-        else {
             lFMotor.setPower(leftFrontPow / 1.5);
             lBMotor.setPower(leftBackPow / 1.5);
             rFMotor.setPower(rightFrontPow / 1.5);
             rBMotor.setPower(rightBackPow / 1.5);
+        }
+        else {
+            lFMotor.setPower(leftFrontPow / 2);
+            lBMotor.setPower(leftBackPow / 2);
+            rFMotor.setPower(rightFrontPow / 2);
+            rBMotor.setPower(rightBackPow / 2);
         }
     }
 }
