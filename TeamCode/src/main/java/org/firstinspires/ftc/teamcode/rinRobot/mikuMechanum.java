@@ -38,6 +38,7 @@ public class mikuMechanum extends OpMode {
          rFMotor = hardwareMap.get(DcMotor.class, "rightFrontMotor");
          Intake = hardwareMap.get(DcMotor.class, "tetoIntake");
          Outtake = hardwareMap.get(DcMotor.class, "tetoOuttake");
+        lBMotor.setDirection(DcMotor.Direction.REVERSE);
         sLServo = hardwareMap.get(Servo.class, "mikuServo");
         sRServo = hardwareMap.get(Servo.class, "tetoServo");
         sRServo.setDirection(Servo.Direction.REVERSE);

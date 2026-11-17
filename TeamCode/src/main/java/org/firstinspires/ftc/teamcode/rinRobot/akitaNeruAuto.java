@@ -18,7 +18,7 @@ public class akitaNeruAuto extends LinearOpMode {
     double tetoTurn = 1;
     double mikuForward = .5;
     double mikuback = -.5;
-    double shoot = .8;
+    double shoot = -1;
     double on = .25;
 
     @Override
@@ -32,34 +32,38 @@ public class akitaNeruAuto extends LinearOpMode {
         // tetoMiku.init(hardwareMap);
         Servo tetoServo = hardwareMap.get(Servo.class, "tetoServo");
         Servo mikuServo = hardwareMap.get(Servo.class, "mikuServo");
+        leftBackMotor.setDirection(DcMotor.Direction.REVERSE);
         runtime = new ElapsedTime();
         waitForStart();
 
-        while (opModeIsActive() && (runtime.seconds() <= 5)){
-            mikuOuttake.setPower(shoot);
-            mikuOuttake.setPower(shoot);
-            mikuOuttake.setPower(shoot);
-            mikuOuttake.setPower(shoot);
-            mikuServo.setPosition(on);
-            tetoServo.setPosition(-on);
-        }
-            while (opModeIsActive() && runtime.seconds() > 5 && runtime.seconds() <= 7) {
-                leftFrontMotor.setPower(mikuForward);
-                leftBackMotor.setPower(-mikuForward);
-                rightBackMotor.setPower(mikuForward);
-                rightFrontMotor.setPower(-mikuForward);
-            }
-        while (opModeIsActive() && runtime.seconds() > 7 && runtime.seconds() <= 9.5) {
-            leftFrontMotor.setPower(-mikuForward);
+        while (opModeIsActive() && (runtime.seconds() <= 0.5)){
+            leftFrontMotor.setPower(mikuForward);
             leftBackMotor.setPower(-mikuForward);
-            rightBackMotor.setPower(-mikuForward);
+            rightBackMotor.setPower(mikuForward);
             rightFrontMotor.setPower(-mikuForward);
         }
-        while (opModeIsActive() && runtime.seconds() > 9.5 && runtime.seconds() <= 12) {
+            while (opModeIsActive() && runtime.seconds() > .5 && runtime.seconds() <= 5.5) {
+                mikuOuttake.setPower(shoot);
+                mikuServo.setPosition(on);
+                tetoServo.setPosition(-on);
+            }
+        while (opModeIsActive() && runtime.seconds() > 5.5 && runtime.seconds() <= 6.3) {
+            leftFrontMotor.setPower(mikuForward);
+            leftBackMotor.setPower(-mikuForward);
+            rightBackMotor.setPower(mikuForward);
+            rightFrontMotor.setPower(-mikuForward);
+        }
+        while (opModeIsActive() && runtime.seconds() > 6.3 && runtime.seconds() <= 9.5) {
             leftFrontMotor.setPower(-mikuForward);
             leftBackMotor.setPower(mikuForward);
             rightBackMotor.setPower(-mikuForward);
             rightFrontMotor.setPower(mikuForward);
+        }
+        while (opModeIsActive() && runtime.seconds() > 9.5 && runtime.seconds() <= 10) {
+            leftFrontMotor.setPower(mikuForward);
+            leftBackMotor.setPower(-mikuForward);
+            rightBackMotor.setPower(mikuForward);
+            rightFrontMotor.setPower(-mikuForward);
         }
         }
     }
