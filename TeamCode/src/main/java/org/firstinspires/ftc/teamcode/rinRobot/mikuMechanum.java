@@ -77,7 +77,7 @@ public class mikuMechanum extends OpMode {
         }
         mikuStatePrevious= mikuStateCurrent;
         if (mikuToggle) {
-            Outtake.setPower(-.7);
+            Outtake.setPower(-.9);
 
         } else {
             Outtake.setPower(0);
