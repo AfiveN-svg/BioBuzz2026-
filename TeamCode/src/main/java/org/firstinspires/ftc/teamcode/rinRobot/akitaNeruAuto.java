@@ -42,12 +42,18 @@ public class akitaNeruAuto extends LinearOpMode {
             rightBackMotor.setPower(mikuForward);
             rightFrontMotor.setPower(-mikuForward);
         }
-            while (opModeIsActive() && runtime.seconds() > .5 && runtime.seconds() <= 5.5) {
+            while (opModeIsActive() && runtime.seconds() > .5 && runtime.seconds() <= 3) {
                 mikuOuttake.setPower(shoot);
-                mikuServo.setPosition(on);
                 tetoServo.setPosition(-on);
             }
+
+        while (opModeIsActive() && runtime.seconds() > 3 && runtime.seconds() <= 5.5) {
+            mikuOuttake.setPower(shoot);
+            tetoServo.setPosition(0);
+            mikuServo.setPosition(on);
+        }
         while (opModeIsActive() && runtime.seconds() > 5.5 && runtime.seconds() <= 6.3) {
+            mikuServo.setPosition(0);
             leftFrontMotor.setPower(mikuForward);
             leftBackMotor.setPower(-mikuForward);
             rightBackMotor.setPower(mikuForward);
