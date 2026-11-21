@@ -84,11 +84,17 @@ public class mikuMechanum extends OpMode {
         }
         if (gamepad1.right_trigger > .5) {
             sLServo.setPosition(.25);
-            sRServo.setPosition(.25);
+
         }
         else {
 
             sLServo.setPosition(0);
+        }
+        if(gamepad1.left_trigger > .5){
+            sRServo.setPosition(.25);
+        }
+        else {
+
             sRServo.setPosition(0);
         }
         if ( neruStateCurrent && !neruStatePrevious) {
